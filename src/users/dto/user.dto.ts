@@ -1,5 +1,5 @@
-import { Exclude, Expose } from 'class-transformer';
-import { Role } from '../schema/role.enum';
+import { Exclude, Expose } from "class-transformer";
+import { Role } from "../schema/role.enum";
 
 export class UserDto {
   @Expose()

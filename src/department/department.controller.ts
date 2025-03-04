@@ -7,14 +7,14 @@ import {
   Patch,
   Post,
   UseGuards,
-} from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { DepartmentService } from './department.service';
-import { CreateDepartmentDto } from './dto/create-department.dto';
-import { UpdateDepartmentDto } from './dto/update-department.dto';
+} from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { DepartmentService } from "./department.service";
+import { CreateDepartmentDto } from "./dto/create-department.dto";
+import { UpdateDepartmentDto } from "./dto/update-department.dto";
 
 @UseGuards(JwtAuthGuard)
-@Controller('department')
+@Controller("department")
 export class DepartmentController {
   constructor(private readonly departmentService: DepartmentService) {}
 
@@ -28,21 +28,21 @@ export class DepartmentController {
     return this.departmentService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.departmentService.findById(id);
   }
 
-  @Patch(':id')
+  @Patch(":id")
   update(
-    @Param('id') id: string,
-    @Body() updateDepartmentDto: UpdateDepartmentDto,
+    @Param("id") id: string,
+    @Body() updateDepartmentDto: UpdateDepartmentDto
   ) {
     return this.departmentService.update(id, updateDepartmentDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.departmentService.remove(id);
   }
 }

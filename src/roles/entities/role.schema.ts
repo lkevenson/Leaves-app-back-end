@@ -1,13 +1,13 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Type } from 'class-transformer';
-import { IsString } from 'class-validator';
-import mongoose, { HydratedDocument } from 'mongoose';
-import { Permission } from 'src/permission/entities/permission.schema';
-import { BaseSchema } from '../../utils/base-entity';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Type } from "class-transformer";
+import { IsString } from "class-validator";
+import mongoose, { HydratedDocument } from "mongoose";
+import { Permission } from "src/permission/entities/permission.schema";
+import { BaseSchema } from "../../utils/base-entity";
 
 export type RoleDocument = HydratedDocument<Role>;
 
-@Schema({ timestamps: true, collection: 'roles' })
+@Schema({ timestamps: true, collection: "roles" })
 export class Role extends BaseSchema {
   @Prop({ type: String, required: true, index: true, unique: true })
   @IsString()

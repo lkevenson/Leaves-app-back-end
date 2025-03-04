@@ -1,4 +1,4 @@
-import { BaseSchema } from './base-entity';
+import { BaseSchema } from "./base-entity";
 
 export interface IRepository<T extends BaseSchema> {
   findAll(): Promise<T[]>;

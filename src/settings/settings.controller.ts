@@ -7,14 +7,14 @@ import {
   Patch,
   Post,
   UseGuards,
-} from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { CreateSettingDto } from './dto/create-setting.dto';
-import { UpdateSettingDto } from './dto/update-setting.dto';
-import { SettingsService } from './settings.service';
+} from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { CreateSettingDto } from "./dto/create-setting.dto";
+import { UpdateSettingDto } from "./dto/update-setting.dto";
+import { SettingsService } from "./settings.service";
 
 @UseGuards(JwtAuthGuard)
-@Controller('settings')
+@Controller("settings")
 export class SettingsController {
   constructor(private readonly settingsService: SettingsService) {}
 
@@ -28,18 +28,18 @@ export class SettingsController {
     return this.settingsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.settingsService.findById(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSettingDto: UpdateSettingDto) {
+  @Patch(":id")
+  update(@Param("id") id: string, @Body() updateSettingDto: UpdateSettingDto) {
     return this.settingsService.update(id, updateSettingDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.settingsService.remove(id);
   }
 }

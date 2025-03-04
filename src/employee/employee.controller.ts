@@ -7,13 +7,13 @@ import {
   Patch,
   Post,
   UseGuards,
-} from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { CreateEmployeeDto } from './dto/create-employee.dto';
-import { UpdateEmployeeDto } from './dto/update-employee.dto';
-import { EmployeeService } from './employee.service';
+} from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { CreateEmployeeDto } from "./dto/create-employee.dto";
+import { UpdateEmployeeDto } from "./dto/update-employee.dto";
+import { EmployeeService } from "./employee.service";
 
-@Controller('employee')
+@Controller("employee")
 export class EmployeeController {
   constructor(private readonly employeeService: EmployeeService) {}
 
@@ -29,41 +29,41 @@ export class EmployeeController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.employeeService.findById(id);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('status/:stat')
-  getByStatus(@Param('stat') status: string) {
+  @Get("status/:stat")
+  getByStatus(@Param("stat") status: string) {
     return this.employeeService.getByStatus(status);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post('changeStatus/:id')
-  changeStatus(@Param('id') id: string) {
+  @Post("changeStatus/:id")
+  changeStatus(@Param("id") id: string) {
     return this.employeeService.changeStatus(id);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('department/:id')
-  getByDepartment(@Param('id') id: string) {
+  @Get("department/:id")
+  getByDepartment(@Param("id") id: string) {
     return this.employeeService.getByDepartmentId(id);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch(":id")
   update(
-    @Param('id') id: string,
-    @Body() updateEmployeeDto: UpdateEmployeeDto,
+    @Param("id") id: string,
+    @Body() updateEmployeeDto: UpdateEmployeeDto
   ) {
     return this.employeeService.update(id, updateEmployeeDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.employeeService.remove(id);
   }
 }

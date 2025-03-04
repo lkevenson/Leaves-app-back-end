@@ -7,13 +7,13 @@ import {
   Patch,
   Post,
   UseGuards,
-} from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { CreateLeaveTypeDto } from './dto/create-leave_type.dto';
-import { UpdateLeaveTypeDto } from './dto/update-leave_type.dto';
-import { LeaveTypeService } from './leave_type.service';
+} from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { CreateLeaveTypeDto } from "./dto/create-leave_type.dto";
+import { UpdateLeaveTypeDto } from "./dto/update-leave_type.dto";
+import { LeaveTypeService } from "./leave_type.service";
 
-@Controller('leave-type')
+@Controller("leave-type")
 export class LeaveTypeController {
   constructor(private readonly leaveTypeService: LeaveTypeService) {}
 
@@ -29,23 +29,23 @@ export class LeaveTypeController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.leaveTypeService.findById(id);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
+  @Patch(":id")
   update(
-    @Param('id') id: string,
-    @Body() updateLeaveTypeDto: UpdateLeaveTypeDto,
+    @Param("id") id: string,
+    @Body() updateLeaveTypeDto: UpdateLeaveTypeDto
   ) {
     return this.leaveTypeService.update(id, updateLeaveTypeDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.leaveTypeService.remove(id);
   }
 }

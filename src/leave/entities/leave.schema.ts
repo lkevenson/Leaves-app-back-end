@@ -1,20 +1,20 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Type } from 'class-transformer';
-import { IsEnum, IsNumber, IsString } from 'class-validator';
-import mongoose, { Document } from 'mongoose';
-import { Employee } from 'src/employee/entities/employee.schema';
-import { LeaveType } from '../../leave_type/entities/leave_type.schema';
-import { BaseSchema } from '../../utils/base-entity';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Type } from "class-transformer";
+import { IsEnum, IsNumber, IsString } from "class-validator";
+import mongoose, { Document } from "mongoose";
+import { Employee } from "src/employee/entities/employee.schema";
+import { LeaveType } from "../../leave_type/entities/leave_type.schema";
+import { BaseSchema } from "../../utils/base-entity";
 
 export enum EnumLeaveType {
-  PENDING = 'Pending',
-  APPROVED = 'Approved',
-  REJECTED = 'Rejected',
+  PENDING = "Pending",
+  APPROVED = "Approved",
+  REJECTED = "Rejected",
 }
 
 export type LeaveDocument = Leave & Document;
 
-@Schema({ timestamps: true, collection: 'leaves' })
+@Schema({ timestamps: true, collection: "leaves" })
 export class Leave extends BaseSchema {
   @Prop({ type: String, required: true, index: true, unique: true })
   @IsString()

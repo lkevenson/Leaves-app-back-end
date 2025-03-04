@@ -1,6 +1,6 @@
-import { Model } from 'mongoose';
-import { BaseSchema } from 'src/utils/base-entity';
-import { Response } from './response';
+import { Model } from "mongoose";
+import { BaseSchema } from "src/utils/base-entity";
+import { Response } from "./response";
 
 export abstract class BaseService<T extends BaseSchema> {
   constructor(private readonly repository: Model<T>) {}
@@ -41,7 +41,7 @@ export abstract class BaseService<T extends BaseSchema> {
         {
           ...updateValue,
         },
-        { new: true },
+        { new: true }
       );
       return this.findById(id);
     } catch (error) {

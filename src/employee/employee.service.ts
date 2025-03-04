@@ -2,17 +2,17 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
-} from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { BaseService } from 'src/utils/base-services';
-import { Response } from 'src/utils/response';
-import { Employee, StatusEmployee } from './entities/employee.schema';
+} from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { BaseService } from "src/utils/base-services";
+import { Response } from "src/utils/response";
+import { Employee, StatusEmployee } from "./entities/employee.schema";
 
 @Injectable()
 export class EmployeeService extends BaseService<Employee> {
   constructor(
-    @InjectModel(Employee.name) protected employeeModel: Model<Employee>,
+    @InjectModel(Employee.name) protected employeeModel: Model<Employee>
   ) {
     super(employeeModel);
   }
@@ -21,10 +21,10 @@ export class EmployeeService extends BaseService<Employee> {
     try {
       const allEmployee = await this.employeeModel
         .find({})
-        .populate('department_id');
+        .populate("department_id");
 
       if (allEmployee.length === 0) {
-        throw new NotFoundException('No employee found.');
+        throw new NotFoundException("No employee found.");
       }
 
       return allEmployee;
@@ -37,10 +37,10 @@ export class EmployeeService extends BaseService<Employee> {
     try {
       const employee = await this.employeeModel
         .findOne({ _id: id })
-        .populate('department_id');
+        .populate("department_id");
 
       if (!employee) {
-        throw new NotFoundException('Employee not found');
+        throw new NotFoundException("Employee not found");
       }
 
       return employee;
@@ -50,17 +50,17 @@ export class EmployeeService extends BaseService<Employee> {
   }
 
   async getByDepartmentId(
-    departmentId: string,
+    departmentId: string
   ): Promise<Employee[] | Response<any>> {
     try {
       const employeeByDepartment = await this.employeeModel
         .find({
           department_id: departmentId,
         })
-        .populate('department_id');
+        .populate("department_id");
 
       if (employeeByDepartment.length === 0) {
-        throw new NotFoundException('No employee found.');
+        throw new NotFoundException("No employee found.");
       }
 
       return employeeByDepartment;
@@ -75,10 +75,10 @@ export class EmployeeService extends BaseService<Employee> {
         .find({
           status,
         })
-        .populate('department_id');
+        .populate("department_id");
 
       if (employeeByStatus.length === 0) {
-        throw new NotFoundException('No employee found.');
+        throw new NotFoundException("No employee found.");
       }
 
       return employeeByStatus;
@@ -91,7 +91,7 @@ export class EmployeeService extends BaseService<Employee> {
     try {
       const emp = await this.employeeModel.findById(id);
 
-      if (!emp) throw new BadRequestException('Employee does not exist');
+      if (!emp) throw new BadRequestException("Employee does not exist");
 
       await this.employeeModel.findByIdAndUpdate(
         {
@@ -103,7 +103,7 @@ export class EmployeeService extends BaseService<Employee> {
               ? StatusEmployee.DISABLE
               : StatusEmployee.ENABLE,
         },
-        { new: true },
+        { new: true }
       );
 
       return true;

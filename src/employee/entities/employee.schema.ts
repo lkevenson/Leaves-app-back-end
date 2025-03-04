@@ -1,22 +1,22 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IsString } from 'class-validator';
-import mongoose, { Document } from 'mongoose';
-import { Department } from 'src/department/entities/department.schema';
-import { BaseSchema } from '../../utils/base-entity';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsString } from "class-validator";
+import mongoose, { Document } from "mongoose";
+import { Department } from "src/department/entities/department.schema";
+import { BaseSchema } from "../../utils/base-entity";
 
 export type EmployeeDocument = Employee & Document;
 
 export enum EnumEmployee {
-  MALE = 'Male',
-  FEMALE = 'Female',
+  MALE = "Male",
+  FEMALE = "Female",
 }
 
 export enum StatusEmployee {
-  ENABLE = 'Enable',
-  DISABLE = 'Disable',
+  ENABLE = "Enable",
+  DISABLE = "Disable",
 }
 
-@Schema({ timestamps: true, collection: 'employees' })
+@Schema({ timestamps: true, collection: "employees" })
 export class Employee extends BaseSchema {
   @Prop({ type: String, required: true })
   @IsString()

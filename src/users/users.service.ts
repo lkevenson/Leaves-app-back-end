@@ -1,16 +1,16 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import * as bcrypt from 'bcryptjs';
-import { Model } from 'mongoose';
-import { BaseService } from 'src/utils/base-services';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './schema/user.schema';
+import { BadRequestException, Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import * as bcrypt from "bcryptjs";
+import { Model } from "mongoose";
+import { BaseService } from "src/utils/base-services";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
+import { User } from "./schema/user.schema";
 
 @Injectable()
 export class UsersService extends BaseService<User> {
   constructor(
-    @InjectModel(User.name) protected readonly userModel: Model<User>,
+    @InjectModel(User.name) protected readonly userModel: Model<User>
   ) {
     super(userModel);
   }
@@ -18,7 +18,7 @@ export class UsersService extends BaseService<User> {
   async create(createUserDto: CreateUserDto): Promise<User | any> {
     try {
       if (createUserDto.password !== createUserDto.confirmPassword) {
-        throw new BadRequestException('Passwords do not match!');
+        throw new BadRequestException("Passwords do not match!");
       }
 
       const hashedPassword = await bcrypt.hash(createUserDto.password, 12);
@@ -40,7 +40,7 @@ export class UsersService extends BaseService<User> {
     try {
       const users: User[] = await this.userModel
         .find({}, { _v: 0, password: 0 })
-        .populate('role_id');
+        .populate("role_id");
       return users;
     } catch (error) {
       return { success: false, error: true, msg: error.message };
@@ -50,7 +50,7 @@ export class UsersService extends BaseService<User> {
   async findByEmail(email: string): Promise<User | any> {
     try {
       return (await this.userModel.findOne({ email: email })).populate(
-        'role_id',
+        "role_id"
       );
     } catch (error) {
       return { success: false, error: true, msg: error.message };
@@ -61,7 +61,7 @@ export class UsersService extends BaseService<User> {
     try {
       return await this.userModel
         .findOne({ username: username })
-        .populate('role_id')
+        .populate("role_id")
         .lean();
     } catch (error) {
       return { success: false, error: true, msg: error.message };
@@ -70,7 +70,7 @@ export class UsersService extends BaseService<User> {
 
   async findOne(id: string): Promise<User | any> {
     try {
-      return await this.userModel.findById(id).populate('role_id');
+      return await this.userModel.findById(id).populate("role_id");
     } catch (error) {
       return { success: false, error: true, msg: error.message };
     }
@@ -78,23 +78,23 @@ export class UsersService extends BaseService<User> {
 
   async updatePassword(
     id: string,
-    updateUserDto: UpdateUserDto,
+    updateUserDto: UpdateUserDto
   ): Promise<User | any> {
     try {
       if (updateUserDto.newPassword !== updateUserDto.confirmPassword) {
-        throw new BadRequestException('Passwords do not match!');
+        throw new BadRequestException("Passwords do not match!");
       }
 
       const userFind: User | any = await this.userModel.findById(id);
 
       if (!userFind) {
-        throw new BadRequestException('User do not exists!');
+        throw new BadRequestException("User do not exists!");
       }
 
       if (
         !(await bcrypt.compare(updateUserDto.oldPassword, userFind.password))
       ) {
-        throw new BadRequestException('Invalid password!');
+        throw new BadRequestException("Invalid password!");
       }
 
       const hashedPassword = await bcrypt.hash(updateUserDto.newPassword, 10);
@@ -103,7 +103,7 @@ export class UsersService extends BaseService<User> {
         {
           password: hashedPassword,
         },
-        { new: true },
+        { new: true }
       );
       return passChanged;
     } catch (error) {
@@ -118,7 +118,7 @@ export class UsersService extends BaseService<User> {
         {
           deleted: false,
         },
-        { new: true },
+        { new: true }
       );
       return enableUser;
     } catch (error) {
@@ -133,7 +133,7 @@ export class UsersService extends BaseService<User> {
         {
           deleted: true,
         },
-        { new: true },
+        { new: true }
       );
       return deletedUser;
     } catch (error) {

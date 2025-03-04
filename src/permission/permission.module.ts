@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Permission, PermissionSchema } from './entities/permission.schema';
-import { PermissionController } from './permission.controller';
-import { PermissionService } from './permission.service';
+import { Module } from "@nestjs/common";
+import { MongooseModule } from "@nestjs/mongoose";
+import { Permission, PermissionSchema } from "./entities/permission.schema";
+import { PermissionController } from "./permission.controller";
+import { PermissionService } from "./permission.service";
 
 @Module({
   imports: [

@@ -1,12 +1,12 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IsString } from 'class-validator';
-import { HydratedDocument } from 'mongoose';
-import { BaseSchema } from 'src/utils/base-entity';
-import { Type } from './type.enum';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsString } from "class-validator";
+import { HydratedDocument } from "mongoose";
+import { BaseSchema } from "src/utils/base-entity";
+import { Type } from "./type.enum";
 
 export type SettingDocument = HydratedDocument<Setting>;
 
-@Schema({ timestamps: true, collection: 'settings' })
+@Schema({ timestamps: true, collection: "settings" })
 export class Setting extends BaseSchema {
   @Prop({ type: String, required: true, index: true, unique: true })
   @IsString()
@@ -36,11 +36,11 @@ export class Setting extends BaseSchema {
   @IsString()
   tel: string;
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String, default: "" })
   @IsString()
   logo: string;
 
-  @Prop({ type: String, default: '' })
+  @Prop({ type: String, default: "" })
   @IsString()
   second_logo: string;
 }
