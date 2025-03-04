@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nestjs-app-service
+spec:
+  selector:
+    app: my-nestjs-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  selector:
+    app: mongodb
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
