@@ -2,10 +2,10 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import * as bcrypt from "bcryptjs";
 import { Model } from "mongoose";
-import { BaseService } from "src/utils/base-services";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { User } from "./schema/user.schema";
+import { BaseService } from "../utils/base-services";
 
 @Injectable()
 export class UsersService extends BaseService<User> {

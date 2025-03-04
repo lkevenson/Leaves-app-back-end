@@ -2,8 +2,8 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Type } from "class-transformer";
 import { IsString } from "class-validator";
 import mongoose, { HydratedDocument } from "mongoose";
-import { Permission } from "src/permission/entities/permission.schema";
 import { BaseSchema } from "../../utils/base-entity";
+import { Permission } from "../../permission/entities/permission.schema";
 
 export type RoleDocument = HydratedDocument<Role>;
 

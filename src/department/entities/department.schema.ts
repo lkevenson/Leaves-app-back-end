@@ -3,8 +3,8 @@ import { Type } from "class-transformer";
 import { IsString } from "class-validator";
 import * as mongoose from "mongoose";
 import { HydratedDocument } from "mongoose";
-import { Setting } from "src/settings/entities/setting.schema";
-import { BaseSchema } from "src/utils/base-entity";
+import { Setting } from "../../settings/entities/setting.schema";
+import { BaseSchema } from "../../utils/base-entity";
 
 export type DepartmentDocument = HydratedDocument<Department>;
 

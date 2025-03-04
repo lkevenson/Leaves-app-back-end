@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { IsString } from "class-validator";
 import { HydratedDocument } from "mongoose";
-import { BaseSchema } from "src/utils/base-entity";
 import { Type } from "./type.enum";
+import { BaseSchema } from "../../utils/base-entity";
 
 export type SettingDocument = HydratedDocument<Setting>;
 
