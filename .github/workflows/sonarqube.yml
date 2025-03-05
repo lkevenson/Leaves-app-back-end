@@ -10,10 +10,26 @@ on:
       - main
 
 jobs:
+  prepare:
+    name: Prepare for SonarQube Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
   sonarqube:
     name: SonarQube Analysis
     runs-on: ubuntu-latest
-    needs: [test]  # Assurez-vous que les tests passent avant de lancer l'analyse SonarQube
+    needs: [prepare, test]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
