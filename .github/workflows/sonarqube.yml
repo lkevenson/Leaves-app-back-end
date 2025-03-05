@@ -1,13 +1,10 @@
 name: SonarQube Analysis
 
 on:
-  push:
-    branches:
-      - main
-      - feature/*
-  pull_request:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Run Unit & E2E Tests"]
+    types:
+      - completed
 
 jobs:
   prepare:
