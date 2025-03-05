@@ -8,10 +8,10 @@ import {
   Post,
   UseGuards,
 } from "@nestjs/common";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { CreateLeaveTypeDto } from "./dto/create-leave_type.dto";
 import { UpdateLeaveTypeDto } from "./dto/update-leave_type.dto";
 import { LeaveTypeService } from "./leave_type.service";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Controller("leave-type")
 export class LeaveTypeController {

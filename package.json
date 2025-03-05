@@ -15,7 +15,7 @@
     "lint": "eslint \"{src,apps,libs}/**/*.ts\" --max-warnings 1000 --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage --passWithNoTests",
+    "test:cov": "jest --coverage ",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "prettier": "prettier --write \"src/**/*.ts\"",
     "prettier:check": "prettier --check \"src/**/*.ts\"",

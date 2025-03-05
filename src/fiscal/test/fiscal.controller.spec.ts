@@ -4,7 +4,6 @@ import { FiscalController } from "../fiscal.controller";
 import { Test, TestingModule } from "@nestjs/testing";
 import { UpdateFiscalDto } from "../dto/update-fiscal.dto";
 import { StatusFiscalYear } from "../entities/fiscal.schema";
-import { NotFoundException } from "@nestjs/common";
 
 describe("FiscalController", () => {
   let fiscalController: FiscalController;

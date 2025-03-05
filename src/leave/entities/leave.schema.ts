@@ -2,9 +2,9 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Type } from "class-transformer";
 import { IsEnum, IsNumber, IsString } from "class-validator";
 import mongoose, { Document } from "mongoose";
-import { Employee } from "src/employee/entities/employee.schema";
 import { LeaveType } from "../../leave_type/entities/leave_type.schema";
 import { BaseSchema } from "../../utils/base-entity";
+import { Employee } from "../../employee/entities/employee.schema";
 
 export enum EnumLeaveType {
   PENDING = "Pending",

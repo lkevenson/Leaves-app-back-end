@@ -8,10 +8,10 @@ import {
   Post,
   UseGuards,
 } from "@nestjs/common";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { CreateHolidayDto } from "./dto/create-holiday.dto";
 import { UpdateHolidayDto } from "./dto/update-holiday.dto";
 import { HolidaysService } from "./holidays.service";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @UseGuards(JwtAuthGuard)
 @Controller("holidays")
