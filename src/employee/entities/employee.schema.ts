@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { IsString } from "class-validator";
 import mongoose, { Document } from "mongoose";
-import { Department } from "src/department/entities/department.schema";
 import { BaseSchema } from "../../utils/base-entity";
+import { Department } from "../../department/entities/department.schema";
 
 export type EmployeeDocument = Employee & Document;
 

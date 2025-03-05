@@ -5,9 +5,10 @@ import {
 } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { BaseService } from "src/utils/base-services";
-import { Response } from "src/utils/response";
+
 import { Employee, StatusEmployee } from "./entities/employee.schema";
+import { BaseService } from "../utils/base-services";
+import { Response } from "../utils/response";
 
 @Injectable()
 export class EmployeeService extends BaseService<Employee> {

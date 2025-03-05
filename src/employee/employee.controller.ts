@@ -8,10 +8,10 @@ import {
   Post,
   UseGuards,
 } from "@nestjs/common";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { CreateEmployeeDto } from "./dto/create-employee.dto";
 import { UpdateEmployeeDto } from "./dto/update-employee.dto";
 import { EmployeeService } from "./employee.service";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Controller("employee")
 export class EmployeeController {
