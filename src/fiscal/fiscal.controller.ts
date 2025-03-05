@@ -8,10 +8,10 @@ import {
   Post,
   UseGuards,
 } from "@nestjs/common";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { CreateFiscalDto } from "./dto/create-fiscal.dto";
 import { UpdateFiscalDto } from "./dto/update-fiscal.dto";
 import { FiscalService } from "./fiscal.service";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @UseGuards(JwtAuthGuard)
 @Controller("fiscal-year")
