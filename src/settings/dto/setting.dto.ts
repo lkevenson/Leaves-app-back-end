@@ -1,5 +1,5 @@
-import { Exclude, Expose } from 'class-transformer';
-import { Type } from '../entities/type.enum';
+import { Exclude, Expose } from "class-transformer";
+import { Type } from "../entities/type.enum";
 
 export class SettingDto {
   @Expose()

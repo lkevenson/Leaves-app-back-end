@@ -1,4 +1,4 @@
-import Leave from './leave';
+import Leave from "./leave";
 
 interface ILeaveBuilder {
   leave: Leave;

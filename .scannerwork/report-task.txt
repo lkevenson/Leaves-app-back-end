@@ -1,0 +1,6 @@
+projectKey=Leaves-App-Backend
+serverUrl=http://localhost:9000
+serverVersion=25.1.0.102122
+dashboardUrl=http://localhost:9000/dashboard?id=Leaves-App-Backend
+ceTaskId=7645618f-5542-4e01-9628-a667f8dffee1
+ceTaskUrl=http://localhost:9000/api/ce/task?id=7645618f-5542-4e01-9628-a667f8dffee1

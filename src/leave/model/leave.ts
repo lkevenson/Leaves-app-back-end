@@ -1,13 +1,13 @@
 export default class Leave {
-  ref_number = ''; // ref-1235,
-  date_of_application = ''; // 25-07-2023,
-  employee = ''; // 648a0c34a1fa00cb5427f2c6,
-  leave_type = ''; // 64887f99596ec03f00279382,
+  ref_number = ""; // ref-1235,
+  date_of_application = ""; // 25-07-2023,
+  employee = ""; // 648a0c34a1fa00cb5427f2c6,
+  leave_type = ""; // 64887f99596ec03f00279382,
   number_of_days = 0; //
-  start_date = ''; // 25-07-2023,
-  end_date = ''; //11-08-2023,
-  justify = ''; //Lorem Ipsum dolr sit ...
-  remarks = ''; //Lorem Ipsum dolr sit ...
+  start_date = ""; // 25-07-2023,
+  end_date = ""; //11-08-2023,
+  justify = ""; //Lorem Ipsum dolr sit ...
+  remarks = ""; //Lorem Ipsum dolr sit ...
 
   construction(): any {
     return {

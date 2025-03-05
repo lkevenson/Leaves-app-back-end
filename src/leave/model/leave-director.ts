@@ -1,5 +1,5 @@
-import Leave from './leave';
-import { LeaveBuilder } from './leave-builder';
+import Leave from "./leave";
+import { LeaveBuilder } from "./leave-builder";
 
 export default class Director {
   static construct(request: any): Leave {

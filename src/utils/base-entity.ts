@@ -1,5 +1,5 @@
-import { Prop } from '@nestjs/mongoose';
-import { IsString } from 'class-validator';
+import { Prop } from "@nestjs/mongoose";
+import { IsString } from "class-validator";
 
 export abstract class BaseSchema {
   @IsString()

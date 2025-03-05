@@ -7,21 +7,21 @@ import {
   Patch,
   Post,
   UseGuards,
-} from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { CreateRoleDto } from './dto/create-role.dto';
-import { UpdateRoleDto } from './dto/update-role.dto';
-import { RolesService } from './roles.service';
+} from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { CreateRoleDto } from "./dto/create-role.dto";
+import { UpdateRoleDto } from "./dto/update-role.dto";
+import { RolesService } from "./roles.service";
 
 @UseGuards(JwtAuthGuard)
-@Controller('roles')
+@Controller("roles")
 export class RolesController {
   constructor(private readonly rolesService: RolesService) {}
 
   @Post()
   create(
     @Body() createRoleDto: CreateRoleDto,
-    @Body('permissions') ids: string[],
+    @Body("permissions") ids: string[]
   ) {
     return this.rolesService.create({
       ...createRoleDto,
@@ -34,16 +34,16 @@ export class RolesController {
     return this.rolesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.rolesService.findById(id);
   }
 
-  @Patch(':id')
+  @Patch(":id")
   update(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body() updateRoleDto: UpdateRoleDto,
-    @Body('permissions') ids: string[],
+    @Body("permissions") ids: string[]
   ) {
     return this.rolesService.update(id, {
       ...updateRoleDto,
@@ -51,8 +51,8 @@ export class RolesController {
     });
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.rolesService.remove(id);
   }
 }

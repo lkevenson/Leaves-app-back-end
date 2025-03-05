@@ -1,11 +1,11 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IsNumber, IsString } from 'class-validator';
-import { Document } from 'mongoose';
-import { BaseSchema } from '../../utils/base-entity';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsNumber, IsString } from "class-validator";
+import { Document } from "mongoose";
+import { BaseSchema } from "../../utils/base-entity";
 
 export type HolidayDocument = Holiday & Document;
 
-@Schema({ timestamps: true, collection: 'Holidays' })
+@Schema({ timestamps: true, collection: "Holidays" })
 export class Holiday extends BaseSchema {
   @Prop({ type: String, required: true, index: true })
   @IsString()

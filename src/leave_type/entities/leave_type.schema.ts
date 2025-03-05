@@ -1,11 +1,11 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IsNumber, IsString } from 'class-validator';
-import { Document } from 'mongoose';
-import { BaseSchema } from '../../utils/base-entity';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsNumber, IsString } from "class-validator";
+import { Document } from "mongoose";
+import { BaseSchema } from "../../utils/base-entity";
 
 export type LeaveTypeDocument = LeaveType & Document;
 
-@Schema({ timestamps: true, collection: 'leaveTypes' })
+@Schema({ timestamps: true, collection: "leaveTypes" })
 export class LeaveType extends BaseSchema {
   @Prop({ type: String, required: true, index: true, unique: true })
   @IsString()
